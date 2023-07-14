@@ -5,18 +5,21 @@
 }
 
 .nav {
-  background-color: #22577a;
+  background-color: #283D3B;
   grid-area: nav;
   color: #fff;
   text-align: center;
 }
 
-.nav svg {
-  margin-top: 7px;
-}
 
+
+.nav img{
+  margin: 4%;
+width: 40%;
+}
 .aside {
-  background-color: #38a3a5;
+  background-color: #772e25;
+  color:#edddd4;
   grid-area: aside;
   text-align: center;
   padding: 2vw;
@@ -36,8 +39,10 @@
 }
 
 .footer {
-  background-color: #57cc99;
+  background-color: #C44536;
   grid-area: footer;
+  height: 100%;
+
 }
 
 .menú-principal {
@@ -57,7 +62,15 @@
     "footer";
 }
 .contenedor-menú {
-  display: none;
+  margin-top: 15px;
+  display: flex;
+  justify-items: flex-start;
+
+
+}
+
+.contenedor-menú a{
+  margin: 7px;
 }
 
 .paginación {
@@ -104,52 +117,124 @@
 
 /*cartas*/
 
-.card {
-  width: 100vw;
-  margin: 5px;
-  background: #fff;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-  cursor: default;
-  transition: all 400ms ease;
-  text-align: center;
-}
 
-.card:hover {
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
-}
-
-.card img {
-  margin-top: 8px;
-  width: 20vw;
-}
-
-.card .contenido {
-  padding: 15px;
-  text-align: center;
-}
-
-.card button {
-  background-color: #c7f9cc;
-  color: #22577a;
-  border: 1px solid #a8e0ae;
-  margin-top: 5px;
-  padding: 7px;
-}
-
-.card button:hover {
-  background-color: #22577a;
-  color: #c7f9cc;
-}
 .container {
-  width: 100%;
-  height: 80%;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction:column;
+  width: 120vw;
+ justify-content: center;
+ align-items: center;
+
 }
+
+.card{
+  position:relative;
+  width: 15vw;
+  height: 30vh;
+  padding: 2%;
+  margin:7%;
+  justify-content: center;
+}
+.card .face {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.card .front {
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000 ; 
+
+}
+
+.card .front img {
+  width: 100%;
+}
+.card .front h3{
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  line-height: 23px;
+  color: #fff;
+  background: rgba(0,0,0,4);
+  text-align: center;
+}
+
+.card .back{
+  transform: perspective(600px) rotateY(180deg);
+  background:rgb(3, 35, 54);
+  padding: 15px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align:center;
+  box-shadow: 0px 5px 10px #000;
+}
+
+.card .back .link{ 
+  margin-top: 2%;
+  border-top: solid 1px #681818;
+  height: 50px;
+  line-height: 50px;
+  background-color: #772e25;
+}
+
+
+.card .back .link a{
+  font-size: 9px;
+  color:#f3f3f3;
+  text-decoration: none;
+}
+
+
+.card .back .link:hover{  
+   background-color: #edddd4;
+}
+
+.card .back .link:hover a{  
+  color:#772e25;}
+
+
+
+.card .back h2{
+  font-size: 15px;
+  margin-top: 2px;
+  letter-spacing: 2px;
+  padding: 3%;;
+
+
+}
+
+.card .back p {
+  font-size: 10px;
+  line-height: 15px;
+
+  text-align: justify
+}
+
+
+
+.card:hover .front{
+  transform: perspective(600px) rotateY(180deg)
+}
+
+.card:hover .back{
+  transform: perspective(600px) rotateY(360deg);
+  transform: scale(1.1)
+}
+
 
 .contenedor-menú a:hover {
   background-color: coral;
   color: #fff;
 }
+
 
 /*Media quaries*/
 
@@ -166,7 +251,9 @@
   .container {
     width: 100%;
     display: flex;
+    flex-direction: row;
     max-width: 100vw;
+    
   }
 
   .contenedor-menú {
@@ -179,6 +266,47 @@
 
   .menú-principal {display: none;
   }
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+  }
+  .card{
+    position:relative;
+    width: 15vw;
+    height: 30vh;
+    padding: 2%;
+    margin:3%;}
+
+
+  
+  .card .back h2{
+    font-size: 14px;
+    margin-top: 20px;
+    line-height: 18px;
+
+
+  }
+  
+  .card .back p{
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: justify;
+  }
+  .card .back .link a{
+
+    color:#f3f3f3;
+    text-decoration: none;
+  }
+  .nav img{
+    width: 30%;
+    }
+
+}
+
 
   @media screen and (min-width: 992px) {
     .grid {
@@ -199,24 +327,42 @@
     .contenedor-menú a {
       padding: 5px;
     }
-
-    .card {
-      width: 100vw;
+    .container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow-y: scroll;
     }
-  }
+    .card{
+      position:relative;
+      width: 15vw;
+      height: 25vh;
+      padding: 2%;
+      margin:3%;
+    }
+    .footer {
+      height: 100%;
+    }
+  
+  
+    .card .back h2{
+      font-size: 20px;}
+  
+    .card .back p{
 
-  .container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-  }
-  .card {
-    width: 30%;
-  }
-  .footer {
-    height: auto;
-  }
-  .menú-principal {display: none;
-  }
-}
+      font-size: 15px;
+      line-height: 22px;
+      text-align: justify;}
+      .card .back .link a{
+        font-size: 14px;
+        color:#f3f3f3;
+        text-decoration: none;
+      }
+
+      .nav img{
+        
+        width: 90%;
+        }
+    }
+  
